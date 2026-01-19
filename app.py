@@ -17,7 +17,7 @@ import tempfile
 # CONFIG STREAMLIT
 # ======================
 st.set_page_config(page_title="Finance App", layout="wide")
-st.title("🏦 Dashboard Financeiro")
+st.title(" Dashboard Financeiro")
 
 # ======================
 # FILTRO MÊS / ANO
@@ -39,7 +39,7 @@ if not config:
 else:
     salario, meta = config
 
-st.header("📌 Configurações")
+st.header("Configurações")
 
 c1, c2 = st.columns(2)
 salario = c1.number_input("Salário mensal (R$)", value=float(salario))
@@ -54,7 +54,7 @@ with engine.begin() as conn:
 # ======================
 # DESPESAS
 # ======================
-st.header("📉 Despesas")
+st.header(" Despesas")
 
 with st.form("add_despesa"):
     data_despesa = st.date_input("Data", value=date.today())
@@ -96,7 +96,7 @@ if not despesas.empty:
 # ======================
 # INVESTIMENTOS
 # ======================
-st.header("📈 Investimentos")
+st.header(" Investimentos")
 
 with st.form("add_invest"):
     data_inv = st.date_input("Data investimento", value=date.today(), key="inv_date")
@@ -140,9 +140,9 @@ saldo = salario - total_despesas - total_invest
 st.header("📊 Resumo")
 
 c1, c2, c3 = st.columns(3)
-c1.metric("📉 Despesas", f"R$ {total_despesas:.2f}")
-c2.metric("📈 Investimentos", f"R$ {total_invest:.2f}")
-c3.metric("💰 Saldo", f"R$ {saldo:.2f}")
+c1.metric(" Despesas", f"R$ {total_despesas:.2f}")
+c2.metric(" Investimentos", f"R$ {total_invest:.2f}")
+c3.metric(" Saldo", f"R$ {saldo:.2f}")
 
 # ======================
 # META
@@ -150,12 +150,12 @@ c3.metric("💰 Saldo", f"R$ {saldo:.2f}")
 if meta > 0:
     progresso = total_invest / meta
     st.progress(min(progresso, 1.0))
-    st.write(f"🎯 Faltam R$ {max(meta - total_invest, 0):.2f} para sua meta")
+    st.write(f" Faltam R$ {max(meta - total_invest, 0):.2f} para sua meta")
 
 # ======================
 # COMPARAÇÃO MENSAL
 # ======================
-st.header("📊 Este mês vs mês passado")
+st.header(" Este mês vs mês passado")
 
 if mes == 1:
     mes_passado, ano_passado = 12, ano - 1
@@ -180,31 +180,31 @@ st.bar_chart(comparacao.set_index("Mês"))
 # ======================
 # ANÁLISES AUTOMÁTICAS
 # ======================
-st.header("🧠 Análises automáticas")
+st.header(" Análises automáticas")
 
 if desp_passado > 0:
     variacao = ((desp_atual - desp_passado) / desp_passado) * 100
 
     if variacao > 0:
-        st.warning(f"⚠️ Seus gastos aumentaram {variacao:.1f}%")
+        st.warning(f" Seus gastos aumentaram {variacao:.1f}%")
     else:
-        st.success(f"✅ Você reduziu seus gastos em {abs(variacao):.1f}%")
+        st.success(f" Você reduziu seus gastos em {abs(variacao):.1f}%")
 else:
-    st.info("ℹ️ Não há dados suficientes para comparação.")
+    st.info(" Não há dados suficientes para comparação.")
 
 # ======================
 # EXPORTAR EXCEL
 # ======================
-st.header("📤 Exportar dados")
+st.header(" Exportar dados")
 
-if st.button("📊 Exportar para Excel"):
+if st.button(" Exportar para Excel"):
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine="openpyxl") as writer:
         despesas.to_excel(writer, sheet_name="Despesas", index=False)
         investimentos.to_excel(writer, sheet_name="Investimentos", index=False)
 
     st.download_button(
-        "⬇️ Baixar Excel",
+        " Baixar Excel",
         data=output.getvalue(),
         file_name=f"financeiro_{mes}_{ano}.xlsx"
     )
@@ -212,7 +212,7 @@ if st.button("📊 Exportar para Excel"):
 # ======================
 # EXPORTAR PDF
 # ======================
-if st.button("📄 Exportar para PDF"):
+if st.button(" Exportar para PDF"):
     pdf = FPDF()
     pdf.add_page()
     pdf.set_font("Arial", size=12)
@@ -229,7 +229,8 @@ if st.button("📄 Exportar para PDF"):
         pdf.output(tmp.name)
         with open(tmp.name, "rb") as f:
             st.download_button(
-                "⬇️ Baixar PDF",
+                " Baixar PDF",
                 data=f,
                 file_name=f"financeiro_{mes}_{ano}.pdf"
             )
+
