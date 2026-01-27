@@ -64,6 +64,10 @@ with st.form("add_despesa"):
     )
     descricao = st.text_input("Descrição")
     valor = st.number_input("Valor (R$)", min_value=0.0)
+    '''
+    eu (Flávio) faria assim na linha 67:
+    recorrente = st.checkbox("Essa conta é recorrente? Se sim sinalize ese botão    ")
+    '''
     submit = st.form_submit_button("Adicionar")
 
     if submit and descricao:
@@ -80,6 +84,7 @@ with st.form("add_despesa"):
                     "c": categoria,
                     "ds": descricao,
                     "v": valor
+                    # "r": recorrente
                 }
             )
         st.rerun()
@@ -233,6 +238,7 @@ if st.button(" Exportar para PDF"):
                 data=f,
                 file_name=f"financeiro_{mes}_{ano}.pdf"
             )
+
 
 
 
