@@ -1,6 +1,6 @@
 import streamlit as st
 
-#Gigi top
+
 with open("style.css", "r", encoding="utf-8") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
@@ -233,6 +233,7 @@ if st.button(" Exportar para PDF"):
                 data=f,
                 file_name=f"financeiro_{mes}_{ano}.pdf"
             )
+
 
 
 
