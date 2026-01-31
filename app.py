@@ -83,7 +83,7 @@ with st.form("add_despesa"):
                     "c": categoria,
                     "ds": descricao,
                     "v": valor
-                     "r": recorrente
+                    
                 }
             )
         st.rerun()
@@ -237,6 +237,7 @@ if st.button(" Exportar para PDF"):
                 data=f,
                 file_name=f"financeiro_{mes}_{ano}.pdf"
             )
+
 
 
 
