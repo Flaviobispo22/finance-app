@@ -1,91 +1,95 @@
 /* =========================
-   FONTE E RESET
+   IMPORTAÇÃO DE FONTE PREMIUM
 ========================= */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
 
+/* Reset de Fonte */
 html, body, [class*="css"] {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-/* Fundo geral com um gradiente mais suave e profissional */
+/* Fundo com efeito de profundidade */
 .stApp {
-    background: radial-gradient(circle at top left, #1e293b, #0f172a);
-    color: #f1f5f9;
+    background: radial-gradient(circle at 20% 10%, #1e293b 0%, #020617 100%);
+    color: #f8fafc;
 }
 
 /* =========================
-   METRICS (OS CARDS DE VALORES)
+   CARDS DE MÉTRICAS (EFEITO GLOW)
 ========================= */
 [data-testid="stMetric"] {
-    background: rgba(30, 41, 59, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 15px 20px !important;
-    transition: transform 0.2s ease;
+    background: rgba(15, 23, 42, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 20px !important;
+    padding: 20px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 [data-testid="stMetric"]:hover {
-    transform: translateY(-2px);
-    border-color: #6366f1;
+    transform: translateY(-5px);
+    border-color: #6366f1 !important;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2) !important;
 }
 
 /* =========================
-   CONTAINERS E CARDS
+   CONTAINERS E SEÇÕES
 ========================= */
-/* Estilizando os blocos de seção para parecerem cards flutuantes */
+/* Estilizando as áreas de formulário e tabelas */
 [data-testid="stVerticalBlock"] > div[style*="flex-direction: column"] > div {
-    background-color: rgba(15, 23, 42, 0.8);
+    background: rgba(30, 41, 59, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    padding: 25px !important;
-    margin-bottom: 15px;
-    backdrop-filter: blur(10px); /* Efeito de vidro */
+    border-radius: 24px;
+    padding: 30px !important;
+    backdrop-filter: blur(12px);
+    margin-bottom: 25px;
 }
 
 /* =========================
-   INPUTS E FORMULÁRIOS
+   INPUTS (DESIGN MODERNO)
 ========================= */
-div[data-baseweb="input"], div[data-baseweb="select"], .stTextArea textarea {
-    background-color: #0f172a !important;
+div[data-baseweb="input"], div[data-baseweb="select"] {
+    background-color: rgba(2, 6, 23, 0.8) !important;
     border: 1px solid #334155 !important;
-    border-radius: 8px !important;
-    transition: border-color 0.3s ease;
+    border-radius: 12px !important;
+    padding: 2px;
 }
 
 div[data-baseweb="input"]:focus-within {
-    border-color: #6366f1 !important;
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+    border-color: #818cf8 !important;
 }
 
 /* =========================
-   BOTÕES (GRADIENTE GLASS)
+   BOTÕES (GRADIENTE NEON)
 ========================= */
-button[kind="primaryFormSubmit"], button[kind="secondary"] {
-    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+button {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%) !important;
     border: none !important;
-    border-radius: 8px !important;
-    padding: 0.5rem 1.5rem !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.5px;
+    border-radius: 12px !important;
+    color: white !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 24px !important;
     transition: all 0.3s ease !important;
-    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3) !important;
 }
 
 button:hover {
+    filter: brightness(1.2);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.5) !important;
     transform: scale(1.02);
-    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4) !important;
 }
 
 /* =========================
-   TABELAS (DATAFRAME)
+   TABELAS E GRÁFICOS
 ========================= */
-[data-testid="stDataFrame"] {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    overflow: hidden;
+.stDataFrame {
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 15px !important;
 }
 
-/* Customização da barra de progresso */
+/* Barra de Progresso elegante */
 .stProgress > div > div > div > div {
-    background-image: linear-gradient(to right, #6366f1, #a855f7);
+    background: linear-gradient(to right, #4f46e5, #ec4899);
+    border-radius: 10px;
 }
